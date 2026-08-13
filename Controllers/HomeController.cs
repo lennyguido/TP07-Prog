@@ -1,3 +1,5 @@
+using Dapper;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Nueva_carpeta.Models;
@@ -5,17 +7,19 @@ using Nueva_carpeta.Models;
 namespace Nueva_carpeta.Controllers;
 
 public class HomeController : Controller
-{
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
-    {
-        _logger = logger;
-    }
-
-    public IActionResult Index()
+{ public IActionResult Index()
     {
         return View();
+    }
+    [HttpPost]
+    public IActionResult Index(string nombreUsuario, string contrasena, string nombre, string apellido, string tipoUsuario)
+    {
+    BD baseDeDatos = new BD();
+
+        Usuario usuario = new Usuario(nombreUsuario, contrasena, nombre, apellido, tipoUsuario);
+
+        baseDeDatos.AgregarUsuario(usuario);
+        return View("Index");
     }
 
     public IActionResult Privacy()
