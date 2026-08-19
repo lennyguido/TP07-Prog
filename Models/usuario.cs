@@ -1,4 +1,4 @@
-//crea una clase usuario con nombre usuario, contraseña, nombre, apellido y tipoUsuario porfavor
+namespace Nueva_carpeta.Models;
 
 public class Usuario
 {
@@ -7,6 +7,15 @@ public class Usuario
     public string Nombre { get; set; }
     public string Apellido { get; set; }
     public string TipoUsuario { get; set; }
+
+    public Usuario()
+    {
+        NombreUsuario = string.Empty;
+        Contrasena = string.Empty;
+        Nombre = string.Empty;
+        Apellido = string.Empty;
+        TipoUsuario = string.Empty;
+    }
 
     public Usuario(string nombreUsuario, string contrasena, string nombre, string apellido, string tipoUsuario)
     {
@@ -17,4 +26,3 @@ public class Usuario
         TipoUsuario = tipoUsuario;
     }
 }
-//me ayudas usando dapper a conectarlo a la base de datos.

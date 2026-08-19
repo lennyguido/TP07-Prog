@@ -1,42 +1,19 @@
-﻿@{
-    ViewData["Title"] = "Registro";
-}
-
-<h1>Registro de Usuario</h1>
-
-<form method="post">
-    <div>
-        <label>Nombre de Usuario:</label>
-        <input type="text" name="nombreUsuario" required>
-    </div>
-
-    <div>
-        <label>Contraseña:</label>
-        <input type="password" name="contrasena" required>
-    </div>
+﻿<header>
+    <nav>
+ 
+        <ul>
+    <li><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+    <li><a href="@Url.Action("IniciarSesion", "Home")">Iniciar sesion</a></li>
+    <li><a href="@Url.Action("Registrarse", "Home")">Registrarse</a></li>
+</ul>
+    </nav>
+</header>
+<main class="home-hero">
+    <h1>Bienvenido a nuestra web</h1>
+    <p>¿Qué desea hacer?</p>
 
     <div>
-        <label>Nombre:</label>
-        <input type="text" name="nombre" required>
+        <a href="@Url.Action("IniciarSesion", "Home")">Iniciar sesion</a>
+        <a href="@Url.Action("Registrarse", "Home")">Registrarse</a>
     </div>
-
-    <div>
-        <label>Apellido:</label>
-        <input type="text" name="apellido" required>
-    </div>
-
-    <div>
-        <label>Tipo de Usuario:</label>
-        <select name="tipoUsuario" required>
-            <option value="">Seleccione un tipo</option>
-            <option value="Alumno">Alumno</option>
-            <option value="Docente">Docente</option>
-            <option value="Coordinador">Coordinador</option>
-            <option value="Padre">Padre</option>
-        </select>
-    </div>
-
-    <div>
-        <button type="submit">Registrarse</button>
-    </div>
-</form>
+</main>

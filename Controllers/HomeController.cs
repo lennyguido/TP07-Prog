@@ -22,6 +22,15 @@ public class HomeController : Controller
         return View("Index");
     }
 
+public IActionResult IniciarSesion()
+{
+    return View();
+}
+
+public IActionResult Registrarse()
+{
+    return View();
+}
     public IActionResult Privacy()
     {
         return View();

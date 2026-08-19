@@ -7,7 +7,7 @@ namespace Nueva_carpeta.Models;
 public class BD
 {
 
-private string _connectionString = @"Server=localhost; DataBase=Usuario;Integrated Security=True;TrustServerCertificate=True;";
+private string _connectionString = @"Server=localhost; DataBase=TP05_Login;Integrated Security=True;TrustServerCertificate=True;";
     public void AgregarUsuario(Usuario usuario)
     {
         string query = "INSERT INTO Usuario (nombreUsuario, contraseña, nombre, apellido, tipoUsuario) VALUES (@NombreUsuario, @Contrasena, @Nombre, @Apellido, @TipoUsuario)";
