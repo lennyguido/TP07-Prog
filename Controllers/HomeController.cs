@@ -1,5 +1,3 @@
-using Dapper;
-using System.Data.SqlClient;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Nueva_carpeta.Models;
@@ -7,30 +5,38 @@ using Nueva_carpeta.Models;
 namespace Nueva_carpeta.Controllers;
 
 public class HomeController : Controller
-{ public IActionResult Index()
+{
+    public IActionResult Index()
     {
         return View();
     }
+
+    public IActionResult IniciarSesion()
+    {
+        return View();
+    }
+
+    public IActionResult Registrarse()
+    {
+        return View();
+    }
+
     [HttpPost]
-    public IActionResult Index(string nombreUsuario, string contrasena, string nombre, string apellido, string tipoUsuario)
+    public IActionResult Registrarse(Usuario usuario)
     {
     BD baseDeDatos = new BD();
 
-        Usuario usuario = new Usuario(nombreUsuario, contrasena, nombre, apellido, tipoUsuario);
-
-        baseDeDatos.AgregarUsuario(usuario);
-        return View("Index");
+    if (baseDeDatos.ExisteUsuario(usuario.NombreUsuario))
+    {
+        ViewBag.Error = "Ese nombre de usuario ya existe, prueba con otro.";
+        return View("Registrarse");
     }
 
-public IActionResult IniciarSesion()
-{
-    return View();
-}
+    baseDeDatos.AgregarUsuario(usuario);
 
-public IActionResult Registrarse()
-{
-    return View();
-}
+    return View("Index");
+    }
+
     public IActionResult Privacy()
     {
         return View();
@@ -39,6 +45,9 @@ public IActionResult Registrarse()
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return View(new ErrorViewModel
+        {
+            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+        });
     }
 }

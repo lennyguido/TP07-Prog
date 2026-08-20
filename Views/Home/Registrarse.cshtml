@@ -11,31 +11,38 @@
 <main class="registro">
 <h1>Registro de Usuario</h1>
 
-<form method="post">
+@if (ViewBag.Error != null)
+{
+    <p>@ViewBag.Error</p>
+}
+
+<p id="mensajeError"></p>
+
+<form method="post" onsubmit="return validarRegistro()">
     <div>
         <h2>Nombre de Usuario:</h2>
-        <input class="registro-control" type="text" name="nombreUsuario" required>
+        <input class="registro-control" type="text" name="nombreUsuario" id="nombreUsuario" required>
     </div>
 
     <div>
         <h2>Contraseña:</h2>
-        <input class="registro-control" type="password" name="contrasena" required>
+        <input class="registro-control" type="password" name="contrasena" id="contrasena" required>
     </div>
 
     <div>
         <h2>Nombre:</h2>
-        <input class="registro-control" type="text" name="nombre" required>
+        <input class="registro-control" type="text" name="nombre" id="nombre" required>
     </div>
 
     <div>
     
         <h2> Apellido: </h2> 
-        <input class="registro-control" type="text" name="apellido" required>
+        <input class="registro-control" type="text" name="apellido" id="apellido" required>
     </div>
 
     <div>
         <h2>Tipo de Usuario:</h2>
-        <select class="registro-control" name="tipoUsuario" required>
+        <select class="registro-control" name="tipoUsuario" id="tipoUsuario" required>
             <option value="">Seleccione un tipo</option>
             <option value="Alumno">Alumno</option>
             <option value="Docente">Docente</option>
@@ -46,6 +53,7 @@
 
     <div>
         <button type="submit">Registrarse</button>
+        <button type="reset">Resetear</button>
     </div>
 </form>
 </main>

@@ -24,4 +24,23 @@ private string _connectionString = @"Server=localhost; DataBase=TP05_Login;Integ
             });
         }
     }
+    public bool ExisteUsuario(string nombreUsuario)
+{
+    string query = "SELECT * FROM Usuario WHERE nombreUsuario = @NombreUsuario";
+
+    using (SqlConnection connection = new SqlConnection(_connectionString))
+    {
+        List<Usuario> usuarios = connection.Query<Usuario>(query, new
+        {
+            NombreUsuario = nombreUsuario
+        }).ToList();
+
+        if (usuarios.Count > 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+}
 }
