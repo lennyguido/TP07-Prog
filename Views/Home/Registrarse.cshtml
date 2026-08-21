@@ -16,10 +16,9 @@
     <p>@ViewBag.Error</p>
 }
 
-<p id="mensajeError"></p>
 
-<form method="post" onsubmit="return validarRegistro()">
-    <div>
+<form id="formRegistro" method="post" onsubmit="return validarRegistro()">
+        <div>
         <h2>Nombre de Usuario:</h2>
         <input class="registro-control" type="text" name="nombreUsuario" id="nombreUsuario" required>
     </div>

@@ -43,4 +43,25 @@ private string _connectionString = @"Server=localhost; DataBase=TP05_Login;Integ
         return false;
     }
 }
+
+    public Usuario? ObtenerUsuarioPorCredenciales(string nombreUsuario, string contrasena)
+    {
+        string query = @"
+            SELECT nombreUsuario AS NombreUsuario,
+                   contraseña AS Contrasena,
+                   nombre AS Nombre,
+                   apellido AS Apellido,
+                   tipoUsuario AS TipoUsuario
+            FROM Usuario
+            WHERE nombreUsuario = @NombreUsuario AND contraseña = @Contrasena";
+
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            return connection.QueryFirstOrDefault<Usuario>(query, new
+            {
+                NombreUsuario = nombreUsuario,
+                Contrasena = contrasena
+            });
+        }
+    }
 }

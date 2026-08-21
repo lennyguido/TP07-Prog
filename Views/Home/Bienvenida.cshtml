@@ -1,0 +1,21 @@
+<header>
+    <nav>
+        <ul>
+            <li><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+            <li><a href="@Url.Action("CerrarSesion", "Home")">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="home-hero">
+    <h1>Bienvenida</h1>
+
+    <p>Bienvenido, @ViewBag.Nombre @ViewBag.Apellido.</p>
+
+    <p><strong>Nombre de usuario:</strong> @ViewBag.NombreUsuario</p>
+    <p><strong>Nombre:</strong> @ViewBag.Nombre</p>
+    <p><strong>Apellido:</strong> @ViewBag.Apellido</p>
+    <p><strong>Tipo de usuario:</strong> @ViewBag.TipoUsuario</p>
+
+    <p>Esta página solo se puede ver si la sesión está iniciada.</p>
+</main>
