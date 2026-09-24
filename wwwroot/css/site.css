@@ -113,3 +113,226 @@ header nav ul li a{
 .registro button:hover {
     opacity: 0.9;
 }
+
+body {
+    background: linear-gradient(180deg, #f5f9ff 0%, #ffffff 100%);
+}
+
+.site-header {
+    background: #d1e8f5;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+}
+
+.site-nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+}
+
+.site-nav .brand {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #244c66;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.nav-links a,
+.nav-links .nav-user {
+    color: #244c66;
+    text-decoration: none;
+}
+
+.nav-links .nav-user {
+    font-weight: 600;
+}
+
+.feed-shell {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-card,
+.create-post-card,
+.post-card {
+    background: #ffffff;
+    border: 1px solid #dbe7f3;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(40, 64, 86, 0.06);
+}
+
+.hero-card {
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+.create-post-card {
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.create-post-card form {
+    display: grid;
+    gap: 12px;
+}
+
+.create-post-card input[type="text"],
+.create-post-card textarea,
+.registro.auth-card input,
+.registro.auth-card select {
+    width: 100%;
+    border: 1px solid #c5d6e7;
+    border-radius: 10px;
+    padding: 12px 14px;
+}
+
+.create-post-card button,
+.like-button,
+.comment-form button,
+.more-container button,
+.btn-link,
+.registro.auth-card button {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    background: #5d6df6;
+    color: white;
+    text-decoration: none;
+}
+
+.login-prompt {
+    text-align: center;
+}
+
+.feed-list {
+    display: grid;
+    gap: 18px;
+}
+
+.post-card {
+    overflow: hidden;
+}
+
+.post-image-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #eef5fb;
+}
+
+.post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.post-body {
+    padding: 20px;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: start;
+}
+
+.post-meta,
+.empty-state,
+.comment-item span {
+    color: #6c7b88;
+    font-size: 0.95rem;
+}
+
+.likes-count {
+    min-width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #eef3ff;
+    color: #3145c5;
+    font-weight: 700;
+}
+
+.post-description {
+    margin-top: 12px;
+    font-size: 1.05rem;
+}
+
+.post-actions {
+    margin: 16px 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.like-button.liked {
+    background: #e74d4d;
+}
+
+.comments-block {
+    border-top: 1px solid #edf1f5;
+    padding-top: 16px;
+}
+
+.comments-list {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.comment-item {
+    background: #f7fbff;
+    border-radius: 12px;
+    padding: 12px 14px;
+}
+
+.comment-item strong {
+    display: block;
+}
+
+.comment-form {
+    display: grid;
+    gap: 10px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    resize: vertical;
+    border: 1px solid #c5d6e7;
+    border-radius: 10px;
+    padding: 12px 14px;
+}
+
+.more-container {
+    text-align: center;
+    margin: 28px 0 48px;
+}
+
+.auth-card {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.alert {
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+}
+
+.alert-danger {
+    background: #fff0f0;
+    border: 1px solid #f0b6b6;
+    color: #a33;
+}

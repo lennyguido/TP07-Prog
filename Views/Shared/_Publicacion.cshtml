@@ -1,0 +1,71 @@
+@model IEnumerable<Nueva_carpeta.Models.Publicacion>
+
+@foreach (var publicacion in Model)
+{
+    <article class="post-card" data-post-id="@publicacion.Id">
+        <div class="post-image-wrap">
+            <img class="post-image" src="~/uploads/publicaciones/@publicacion.Imagen" alt="@publicacion.Titulo" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'900\' height=\'500\'><rect width=\'100%\' height=\'100%\' fill=\'%23dcecff\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%23005588\' font-family=\'Arial\' font-size=\'42\'>Sin imagen</text></svg>'" />
+        </div>
+
+        <div class="post-body">
+            <div class="post-header">
+                <div>
+                    <h2>@publicacion.Titulo</h2>
+                    <p class="post-meta">@publicacion.NombreUsuario · @publicacion.FechaPublicacion.ToString("dd/MM/yyyy HH:mm")</p>
+                </div>
+                <span class="likes-count" id="likes-@publicacion.Id">@publicacion.CantidadMeGusta</span>
+            </div>
+
+            <p class="post-description">@publicacion.Descripcion</p>
+
+            <div class="post-actions">
+                @if (Context.Session.GetString("UsuarioLogueado") != null)
+                {
+                    <button type="button"
+                            class="like-button @(publicacion.YaLeGusto ? "liked" : "")"
+                            data-post-id="@publicacion.Id">
+                        @(publicacion.YaLeGusto ? "Ya no me gusta" : "Me Gusta")
+                    </button>
+                }
+                else
+                {
+                    <a class="btn-link" href="@Url.Action("IniciarSesion", "Home")">Inicia sesión para dar Me Gusta</a>
+                }
+            </div>
+
+            <section class="comments-block">
+                <h3>Comentarios</h3>
+
+                <div class="comments-list" id="comments-@publicacion.Id">
+                    @if (publicacion.Comentarios.Count == 0)
+                    {
+                        <p class="empty-state">Todavía no hay comentarios.</p>
+                    }
+                    else
+                    {
+                        foreach (var comentario in publicacion.Comentarios)
+                        {
+                            <div class="comment-item" data-comment-id="@comentario.Id">
+                                <strong>@comentario.NombreUsuario</strong>
+                                <span>@comentario.FechaComentario.ToString("dd/MM/yyyy HH:mm")</span>
+                                <p>@comentario.Texto</p>
+                            </div>
+                        }
+                    }
+                </div>
+
+                @if (Context.Session.GetString("UsuarioLogueado") != null)
+                {
+                    <form class="comment-form" data-post-id="@publicacion.Id">
+                        <textarea name="texto" rows="2" placeholder="Escribí un comentario" required></textarea>
+                        <button type="submit">Comentar</button>
+                    </form>
+                }
+                else
+                {
+                    <p class="empty-state">Inicia sesión para comentar.</p>
+                }
+            </section>
+        </div>
+    </article>
+}

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Nueva carpeta")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72db0a5a4aaec31793ddeb46bb0d141053cd2efa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bbc03b4176cde9c78053cf04b9ef6ae8bbb3ea33")]
 [assembly: System.Reflection.AssemblyProductAttribute("Nueva carpeta")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Nueva carpeta")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

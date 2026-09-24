@@ -1,19 +1,49 @@
-﻿<header>
-    <nav>
- 
-        <ul>
-    <li><a href="@Url.Action("Index", "Home")">Inicio</a></li>
-    <li><a href="@Url.Action("IniciarSesion", "Home")">Iniciar sesion</a></li>
-    <li><a href="@Url.Action("Registrarse", "Home")">Registrarse</a></li>
-</ul>
-    </nav>
-</header>
-<main class="home-hero">
-    <h1>Bienvenido a nuestra web</h1>
-    <p>¿Qué desea hacer?</p>
+﻿@model Nueva_carpeta.Models.FeedViewModel
 
-    <div>
-        <a href="@Url.Action("IniciarSesion", "Home")">Iniciar sesion</a>
-        <a href="@Url.Action("Registrarse", "Home")">Registrarse</a>
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<section class="feed-shell">
+    <div class="hero-card">
+        <h1>Red social</h1>
+        <p>Comparte publicaciones, comenta y da Me Gusta sin recargar la página.</p>
     </div>
-</main>
+
+    @if (TempData["ErrorPublicacion"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorPublicacion"]</div>
+    }
+
+    @if (ViewBag.UsuarioLogueado != null)
+    {
+        <section class="create-post-card">
+            <h2>Crear publicación</h2>
+            <form asp-action="CrearPublicacion" asp-controller="Home" method="post" enctype="multipart/form-data">
+                <input type="text" name="Titulo" placeholder="Título" value="@Model.NuevaPublicacion.Titulo" required />
+                <textarea name="Descripcion" placeholder="Descripción" rows="4" required>@Model.NuevaPublicacion.Descripcion</textarea>
+                <input type="file" name="ImagenArchivo" accept="image/*" required />
+                <button type="submit">Publicar</button>
+            </form>
+        </section>
+    }
+    else
+    {
+        <section class="create-post-card login-prompt">
+            <h2>Ingresá para publicar</h2>
+            <p>Solo los usuarios logueados pueden crear publicaciones, comentar y dar Me Gusta.</p>
+            <a class="btn-link" href="@Url.Action("IniciarSesion", "Home")">Iniciar sesión</a>
+        </section>
+    }
+
+    <section id="feedPublicaciones" class="feed-list">
+        @await Html.PartialAsync("_Publicacion", Model.Publicaciones)
+    </section>
+
+    @if (Model.TieneMasPublicaciones)
+    {
+        <div class="more-container">
+            <button id="btnVerMas" type="button" data-desde="@Model.SiguienteDesde">Ver más</button>
+        </div>
+    }
+</section>
