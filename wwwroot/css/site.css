@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    background-color: #f4f6f8;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222222;
+}
+
+header nav {
+    width: 100%;
+    padding: 1% 0;
+    background-color: #d1e8f5;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    padding: 10px 16px;
+    background-color: #8d8ffc;
+    border-radius: 20px;
+    color: white;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fffeb6;
+}
+
+main {
+    width: 100%;
+}
+
+.inicio {
+    width: 70%;
+    margin: 30px auto;
+}
+
+.inicio > h1 {
+    text-align: center;
+}
+
+.crear-publicacion,
+.publicacion {
+    background-color: white;
+    border: 1px solid #cccccc;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.crear-publicacion input,
+.crear-publicacion textarea,
+.nuevo-comentario textarea {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #aaaaaa;
+    border-radius: 8px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #8d8ffc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.publicacion img {
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.datos-publicacion {
+    color: #666666;
+}
+
+.me-gusta {
+    margin: 15px 0;
+}
+
+.comentarios {
+    border-top: 1px solid #dddddd;
+    padding-top: 10px;
+}
+
+.comentario {
+    background-color: #f3f3f3;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+}
+
+.comentario p {
+    margin: 5px 0;
+}
+
+.nuevo-comentario {
+    margin-top: 10px;
+}
+
+.ver-mas {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.registro {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.registro form {
+    width: 40%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #d1e8f5;
+    border-radius: 12px;
+    background-color: white;
+}
+
+.registro h2 {
+    font-size: 20px;
+}
+
+.registro-control {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #8d8ffc;
+    border-radius: 8px;
+}
+
+.registro button {
+    margin-top: 16px;
+}
+
+.error {
+    color: #b00020;
+}

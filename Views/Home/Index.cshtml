@@ -1,0 +1,87 @@
+@model List<Publicacion>
+
+@{
+    ViewData["Title"] = "Red Social";
+}
+
+<section class="inicio">
+    <h1>Red Social</h1>
+
+    @if (ViewBag.UsuarioLogueado != null)
+    {
+        <p>Bienvenido <strong>@ViewBag.NombreUsuario</strong></p>
+
+        <section class="crear-publicacion">
+            <h2>Crear una publicación</h2>
+            <form action='@Url.Action("CrearPublicacion", "Home")' method="POST" enctype="multipart/form-data">
+                <input type="text" name="titulo" placeholder="Título" required />
+                <textarea name="descripcion" rows="4" placeholder="Descripción" required></textarea>
+                <input type="file" name="imagen" required />
+                <button type="submit">Publicar</button>
+            </form>
+        </section>
+
+        <input type="hidden" id="estadoSesion" value="si" />
+    }
+    else
+    {
+        <p>Podés mirar las publicaciones. Para publicar, comentar o dar Me Gusta tenés que iniciar sesión.</p>
+        <input type="hidden" id="estadoSesion" value="no" />
+    }
+
+    <section id="listaPublicaciones">
+        @foreach (Publicacion publicacion in Model)
+        {
+            <article class="publicacion">
+                <h2>@publicacion.Titulo</h2>
+                <p class="datos-publicacion">@@@publicacion.NombreUsuario - @publicacion.FechaPublicacion</p>
+                <img src="/img/publicaciones/@publicacion.Imagen" alt="Imagen de la publicación" />
+                <p>@publicacion.Descripcion</p>
+
+                <div class="me-gusta">
+                    <span>Me Gusta: </span>
+                    <span id="cantidadMeGusta@(publicacion.Id)">@publicacion.CantidadMeGusta</span>
+
+                    @if (ViewBag.UsuarioLogueado != null)
+                    {
+                        if (publicacion.YaLeGusto)
+                        {
+                            <button id="botonMeGusta@(publicacion.Id)" type="button" onclick="meGusta(@publicacion.Id)">Ya no me gusta</button>
+                        }
+                        else
+                        {
+                            <button id="botonMeGusta@(publicacion.Id)" type="button" onclick="meGusta(@publicacion.Id)">Me Gusta</button>
+                        }
+                    }
+                </div>
+
+                <div class="comentarios" id="comentarios@(publicacion.Id)">
+                    <h3>Comentarios</h3>
+
+                    @foreach (Comentario comentario in publicacion.Comentarios)
+                    {
+                        <div class="comentario">
+                            <p><strong>@@@comentario.NombreUsuario</strong> - @comentario.FechaComentario</p>
+                            <p>@comentario.Texto</p>
+                        </div>
+                    }
+                </div>
+
+                @if (ViewBag.UsuarioLogueado != null)
+                {
+                    <div class="nuevo-comentario">
+                        <textarea id="textoComentario@(publicacion.Id)" rows="2" placeholder="Escribí un comentario"></textarea>
+                        <button type="button" onclick="comentar(@publicacion.Id)">Comentar</button>
+                    </div>
+                }
+            </article>
+        }
+    </section>
+
+    @if (Model.Count == 10)
+    {
+        <div class="ver-mas">
+            <button id="botonVerMas" type="button" onclick="verMas()">Ver más</button>
+        </div>
+    }
+</section>
